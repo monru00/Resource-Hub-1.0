@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-bold text-center mb-8">Dynamic Image Gallery</h1>
+      <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+    <script>
+      // Array of image objects (title, local image path, description)
+      const images = [
+        {
+          title: "ui-coach",
+          url: "./images/ui-coach.jpg",
+          description:
+            "Sharpen your UI/UX skills with real-world project ideas, curated color palettes, and font pairings. UI Coach is your go-to platform for hands-on design practice.",
+        },
+        {
+          title: "Designercize",
+          url: "./images/designsize.jpg",
+          description:
+            "Enhance your design thinking with randomized prompts that simulate real-world challenges. Perfect for whiteboard practice and quick brainstorming sessions.",
+        },
+        {
+          title: "UX Tools Challenges",
+          url: "./images/uxtools.jpg",
+          description:
+            "Dive into practical UX exercises covering personas, wireframes, and more. Ideal for building a strong portfolio and honing your design process.",
+        },
+        {
+          title: "Design Better Podcast",
+          url: "./images/designbetterpodcast.jpg",
+          description:
+            "Explore the intersection of design and technology through insightful conversations with industry leaders. A must-listen for creative professionals.",
+        },
+        {
+          title: "Lapa Ninja",
+          url: "./images/ninja.jpg",
+          description:
+            "Discover a vast collection of landing page designs for inspiration. Browse by categories like SaaS, eCommerce, and portfolios to spark your creativity.",
+        },
+        {
+          title: "Figma UI Kit",
+          url: "./images/Futuristic-Stroke-Patterns.jpg",
+          description:
+            "Access a comprehensive UI kit on Figma to streamline your design workflow. Includes components, icons, and templates to kickstart your projects.",
+        },
+        {
+          title: "Call to Inspiration",
+          url: "./images/calltoinspiration.jpg",
+          description:
+            "Explore a curated gallery of design elements and micro-interactions that add delightful touches to user experiences.",
+        },
+        {
+          title: "Navbar Gallery",
+          url: "./images/navbar-gallery.jpg",
+          description:
+            "Get inspired by a variety of navigation designs, from sticky headers to mega menus. A valuable resource for enhancing site navigation.",
+        },
+        {
+          title: "Design Spells",
+          url: "./images/easter-egg.jpg",
+          description:
+            "Uncover magical UI details and Easter eggs that elevate user engagement. Perfect for adding that extra sparkle to your designs.",
+        },
+        {
+          title: "Realtime Colors",
+          url: "./images/realtimecolors.jpg",
+          description:
+            "Visualize and tweak your color palettes in real-time on actual UI components. Simplify your design decisions with instant previews.",
+        },
+        {
+          title: "Looka",
+          url: "./images/looka.jpg",
+          description:
+            "Create professional logos and brand identities effortlessly with AI-powered design tools. Ideal for startups and personal projects.",
+        },
+        {
+          title: "Bento Grids",
+          url: "./images/bentogrids.jpg",
+          description:
+            "Explore modern grid layouts inspired by Japanese bento boxes. A unique approach to organizing content visually.",
+        },
+        {
+          title: "Foleo Design",
+          url: "./images/foleo.jpg",
+          description:
+            "Discover a collection of beautifully crafted design templates and resources to enhance your creative projects.",
+        },
+        {
+          title: "The Design System Guide",
+          url: "./images/thedesignsystem.jpg",
+          description:
+            "Learn how to build and maintain effective design systems with this comprehensive guide covering principles, components, and best practices.",
+        },
+        {
+          title: "Litho Animations",
+          url: "./images/fblitho.jpg",
+          description:
+            "Explore Facebook's Litho framework for building efficient UIs with smooth animations and transitions.",
+        },
+        {
+          title: "Icons8 Lunacy",
+          url: "./images/icons8.jpg",
+          description:
+            "A free, lightweight graphic design software for Windows with built-in assets and offline capabilities.",
+        },
+        {
+          title: "Figma Design System",
+          url: "./images/preline-ui.jpg",
+          description:
+            "Utilize a robust design system within Figma to maintain consistency across your projects. Includes components, styles, and guidelines.",
+        },
+        {
+          title: "Pacdora",
+          url: "./images/pacdora.jpg",
+          description:
+            "Design and preview packaging in 3D with this intuitive tool. Great for branding and product presentation.",
+        },
+        {
+          title: "Storyset",
+          url: "images/storyset.jpg",
+          description:
+            "Access a library of customizable illustrations to enhance your designs and presentations.",
+        },
+        {
+          title: "Overflow",
+          url: "./images/overflow-design.jpg",
+          description:
+            "Create interactive user flow diagrams to visualize and present your design processes effectively.",
+        },
+        {
+          title: "Carbon Design System",
+          url: "./images/carbondesignsystem.jpg",
+          description:
+            "IBM's open-source design system for building digital products with consistency and efficiency.",
+        },
+        {
+          title: "Motion Zajno",
+          url: "./images/motion-zajno.jpg",
+          description:
+            "Explore a showcase of creative motion design projects to inspire your animations and transitions.",
+        },
+        {
+          title: "Typewolf",
+          url: "./images/typewolf.jpg",
+          description:
+            "Stay updated with the latest typography trends and find font inspiration for your next project.",
+        },
+        {
+          title: "Penpot",
+          url: "./images/penpot.jpg",
+          description:
+            "An open-source design and prototyping platform for cross-domain teams. Collaborate seamlessly on UI/UX projects.",
+        },
+        {
+          title: "Figma",
+          url: "./images/figma.jpg",
+          description:
+            "Design, prototype, and collaborate—all in one place. Figma is a powerful, browser-based design tool that enables real-time collaboration, making it ideal for teams working on UI/UX projects.",
+        },
+      ];
+
+      // Function to render gallery
+      function renderGallery() {
+        const gallery = document.getElementById("gallery");
+        gallery.innerHTML = ""; // Clear existing content
+        images.forEach((image) => {
+          const card = document.createElement("div");
+          card.className = "bg-white rounded-lg shadow-lg overflow-hidden";
+          card.innerHTML = `
+                    <img src="${image.url}" alt="${image.title}" class="w-full object-cover">
+                    <h2 class="text-xl font-semibold text-center p-4">${image.title}</h2>
+                    <p class="p-4 text-gray-600">${image.description}</p>
+                `;
+          gallery.appendChild(card);
+        });
+      }
+
+      // Initial render
+      renderGallery();
+    </script>
+  </body>
+</html>
