@@ -10,13 +10,15 @@ export default function PagesLayout({
     <div className="flex min-h-screen flex-col">
       {/* HEADER  */}
       <header className="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full">
-        <nav className="w-full flex flex-wrap lg:grid lg:grid-cols-12 basis-full items-center px-4 md:px-6 lg:px-8 mx-auto fixed z-50 bg-white/30 backdrop-blur-md border-b border-white/20 shadow-sm">
+        <nav className="w-full h-20 flex flex-wrap lg:grid lg:grid-cols-12 basis-full items-center px-4 md:px-6 lg:px-8 mx-auto fixed z-50 bg-white/30 backdrop-blur-md border-b border-white/20 shadow-sm">
           <div className="lg:col-span-3 flex items-center">
             {/* Logo */}
-            <Link href="/home" className="pr-3">
-              <Image src="/images/logo.png" alt="" width={60} height={60} />
+            <Link href="/" className="pr-3">
+              <Image src="/images/logo.svg" alt="" width={60} height={60} />
             </Link>
-            <p className="text-xl">Resource Hub</p>
+            <Link href="/" className="text-xl font-medium cursor-pointer">
+              Resource Hub
+            </Link>
             {/* End Logo */}
 
             <div className="ms-1 sm:ms-2"></div>
@@ -24,18 +26,22 @@ export default function PagesLayout({
 
           {/* Button Group */}
           <div className="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3">
-            <button
-              type="button"
-              className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white dark:focus:text-white"
-            >
-              Sign in
-            </button>
-            <button
-              type="button"
-              className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 transition disabled:opacity-50 disabled:pointer-events-none"
-            >
-              Bootmarks
-            </button>
+            <Link href="/">
+              <button
+                type="button"
+                className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white dark:focus:text-white h-10 cursor-pointer"
+              >
+                Sign in
+              </button>
+            </Link>
+            <Link href="/">
+              <button
+                type="button"
+                className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden  transition disabled:opacity-50 disabled:pointer-events-none h-9 cursor-pointer"
+              >
+                Bootmarks
+              </button>
+            </Link>
 
             <div className="lg:hidden">
               <button
@@ -47,37 +53,20 @@ export default function PagesLayout({
                 aria-label="Toggle navigation"
                 data-hs-collapse="#hs-navbar-hcail"
               >
-                <svg
+                <Image
+                  src="/images/menu.svg"
+                  alt=""
+                  width={24}
+                  height={24}
                   className="hs-collapse-open:hidden shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="3" x2="21" y1="6" y2="6" />
-                  <line x1="3" x2="21" y1="12" y2="12" />
-                  <line x1="3" x2="21" y1="18" y2="18" />
-                </svg>
-                <svg
+                />
+                <Image
+                  src="images/close.svg"
+                  alt=""
+                  width={24}
+                  height={24}
                   className="hs-collapse-open:block hidden shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg>
+                />
               </button>
             </div>
           </div>
@@ -91,37 +80,37 @@ export default function PagesLayout({
           >
             <div className="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
               <div>
-                <a
-                  className="relative inline-block text-black focus:outline-hidden before:absolute before:bottom-0.5 before:start-0 before:-z-1 before:w-full before:h-1 before:bg-blue-400 dark:text-white"
-                  href="#"
+                <Link
+                  className="inline-block text-black  hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                  href="/"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </Link>
               </div>
               <div>
-                <a
-                  className="inline-block text-black hover:text-gray-600 focus:outline-hidden focus:text-gray-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
-                  href="#"
+                <Link
+                  className="inline-block text-black hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                  href="/resources"
                 >
                   Resources
-                </a>
+                </Link>
               </div>
               <div>
-                <a
-                  className="inline-block text-black hover:text-gray-600 focus:outline-hidden focus:text-gray-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
-                  href="#"
+                <Link
+                  className="inline-block text-black hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                  href="faq"
                 >
                   FAQ
-                </a>
+                </Link>
               </div>
               <div>
-                <a
-                  className="inline-block text-black hover:text-gray-600 focus:outline-hidden focus:text-gray-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
-                  href="#"
+                <Link
+                  className="inline-block text-black hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-white dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                  href="/contact"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -130,8 +119,11 @@ export default function PagesLayout({
       </header>
       {/* END HEADER */}
       <main className="flex-1">{children}</main>
-      // footer
-      <footer className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+      {/* footer */}
+      <footer
+        className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto border-t border-t-gray-300 bg-blue-50
+"
+      >
         {/* Grid */}
         <div className="text-center">
           <div>

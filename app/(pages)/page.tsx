@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   return (
     // Hero
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden pt-35 pb-35">
       {/* Gradients */}
       <div
         aria-hidden="true"
@@ -20,7 +21,7 @@ export default function Page() {
             {/* Title */}
             <div className="mt-5 max-w-2xl">
               <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-                Get What you want need
+                Get the access what you want need
               </h1>
             </div>
             {/* End Title */}
@@ -35,9 +36,9 @@ export default function Page() {
 
             {/* Buttons */}
             <div className="mt-8 gap-3 flex justify-center">
-              <a
+              <Link
+                href="/resources"
                 className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                href="#"
               >
                 Get started
                 <Image
@@ -46,10 +47,10 @@ export default function Page() {
                   width={12}
                   height={12}
                 />
-              </a>
-              <a
+              </Link>
+              <Link
+                href="/contact"
                 className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-                href="#"
               >
                 <Image
                   src="/images/feedback.svg"
@@ -58,32 +59,8 @@ export default function Page() {
                   height={20}
                 />
                 Feed back
-              </a>
+              </Link>
             </div>
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
-            <h1>hi</h1>
-            <br />
             {/* End Buttons */}
           </div>
         </div>
