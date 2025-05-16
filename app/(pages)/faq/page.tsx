@@ -12,34 +12,29 @@ export default function FAQPage() {
 
   const faqs = [
     {
-      question: "Can I cancel at anytime?",
+      question: "What is Resource Hub?",
       answer:
-        "Yes, you can cancel anytime no questions are asked while you cancel but we would highly appreciate if you will give us some feedback.",
+        "Resource Hub is a platform to easily find resources, including learning materials, AI tools, books, educational  repositories and much more. It’s designed to make your research and journey more efficient.",
     },
     {
-      question: "My team has credits. How do we use them?",
+      question: "How do I find resources?",
       answer:
-        "Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee and dial in the details.",
+        "Navigate through our Resources page to browse categories like AI tools, books, and repos. Use the navigation bar to explore, and stay tuned for our upcoming search feature to find specific resources quickly.",
     },
     {
-      question: "How does Preline’s pricing work?",
+      question: "How do I share you my feedback",
       answer:
-        "Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.",
+        "we are working on this feature for now share your questions or feedbacks by Visiting our Contact page to send us a message, and we’ll get back to you as soon as possible.",
     },
     {
-      question: "How secure is Preline?",
+      question: "Is there more",
       answer:
-        "Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.",
+        "absolutely this is only basic version 1.0 many many features are coming in next features ",
     },
     {
-      question: "How do I get access to a theme I purchased?",
+      question: "How can I contribute",
       answer:
-        "If you lose the link for a theme you purchased, don’t panic! We’ve got you covered. You can login to your account, tap your avatar in the upper right corner, and tap Purchases.",
-    },
-    {
-      question: "Upgrade License Type",
-      answer:
-        "There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase.",
+        "we are working on it but for now submit your resources via the contact page ",
     },
   ];
 

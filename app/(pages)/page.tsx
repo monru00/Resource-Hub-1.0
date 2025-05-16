@@ -21,16 +21,25 @@ export default function Page() {
             {/* Title */}
             <div className="mt-5 max-w-2xl">
               <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-                Get the access what you want need
+                Find easily what you
+                <span className="relative inline-block">
+                  <span className="text-gray-500 dark:text-neutral-400">
+                    want
+                  </span>
+
+                  <span className="absolute left-0 right-0 top-1/2 h-1 bg-blue-300 rounded-sm -translate-y-1/2"></span>
+                </span>{" "}
+                need
               </h1>
             </div>
             {/* End Title */}
 
             <div className="mt-5 max-w-3xl">
               <p className="text-lg text-gray-600 dark:text-neutral-400">
-                Preline UI is an open-source set of prebuilt UI components,
-                ready-to-use examples and Figma design system based on the
-                utility-first Tailwind CSS framework.
+                Resource Hub is where you can easily find resources, including
+                learning materials, AI tools, books, educational repositories,
+                and much more making your life and research moments easier and
+                more efficient
               </p>
             </div>
 
