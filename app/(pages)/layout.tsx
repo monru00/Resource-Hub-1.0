@@ -35,22 +35,22 @@ export default function PagesLayout({ children }) {
   // Use original size for buttons always (not full width on mobile)
   const NavButtons = () => (
     <div className="flex flex-col gap-y-2 lg:flex-row lg:items-center lg:gap-x-2 w-full lg:w-auto">
-      <a
+      <Link
         href="#"
         onClick={toggleCart}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white h-10 cursor-pointer"
         style={{ width: "auto" }}
       >
         Sign in
-      </a>
-      <a
+      </Link>
+      <Link
         href="#"
         onClick={toggleCart}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none transition disabled:opacity-50 disabled:pointer-events-none h-9 cursor-pointer"
         style={{ width: "auto" }}
       >
         Bookmarks
-      </a>
+      </Link>
     </div>
   );
 
@@ -188,7 +188,7 @@ export default function PagesLayout({ children }) {
               </button>
             )}
             <div className="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
-              <a
+              <Link
                 href="/"
                 className={`inline-block ${
                   pathname === "/"
@@ -197,8 +197,8 @@ export default function PagesLayout({ children }) {
                 } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
               >
                 Home
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/resources"
                 className={`inline-block ${
                   pathname === "/resources"
@@ -207,8 +207,8 @@ export default function PagesLayout({ children }) {
                 } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
               >
                 Resources
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/faq"
                 className={`inline-block ${
                   pathname === "/faq"
@@ -217,8 +217,8 @@ export default function PagesLayout({ children }) {
                 } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
               >
                 FAQ
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className={`inline-block ${
                   pathname === "/contact"
@@ -227,7 +227,8 @@ export default function PagesLayout({ children }) {
                 } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
               >
                 Contact
-              </a>
+              </Link>
+
               {/* On mobile, show the nav buttons inside menu */}
               {isMobile && (
                 <div className="mt-4 mb-2 flex flex-col gap-2 w-full">
@@ -313,7 +314,7 @@ export default function PagesLayout({ children }) {
             </p>
           </div>
           <div className="mt-3 space-x-2">
-            <a
+            <Link
               className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
               href="https://x.com/monru00"
               target="_blank"
@@ -325,8 +326,8 @@ export default function PagesLayout({ children }) {
                 height={16}
                 className="shrink-0 size-5"
               />
-            </a>
-            <a
+            </Link>
+            <Link
               className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
               href="https://www.linkedin.com/in/mohammed-nesru-a16543309/"
               target="_blank"
@@ -338,8 +339,8 @@ export default function PagesLayout({ children }) {
                 height={16}
                 className="shrink-0 size-5"
               />
-            </a>
-            <a
+            </Link>
+            <Link
               className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
               href="https://github.com/monru00"
               target="_blank"
@@ -351,7 +352,7 @@ export default function PagesLayout({ children }) {
                 height={16}
                 className="shrink-0 size-5"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
