@@ -135,17 +135,11 @@
 "use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
-import Image from "next/image";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface FormData {
   fullName: string;
   email: string;
+  telegram: string;
   comment: string;
 }
 
@@ -153,72 +147,49 @@ export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
+    telegram: "",
     comment: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-
-  const validateEmailOrTelegram = (value: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const telegramRegex = /^@[A-Za-z0-9_]{5,}$/;
-    return emailRegex.test(value) || telegramRegex.test(value);
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setError(null);
-    setSuccess(null);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(null);
-
-    if (!validateEmailOrTelegram(formData.email)) {
-      setError(
-        "Please enter a valid email address or Telegram username (e.g., @username)."
-      );
-      return;
-    }
-
     setIsSubmitting(true);
+    setMessage(null);
 
     try {
-      const { error } = await supabase.from("contacts").insert([
-        {
-          fullName: formData.fullName,
-          email: formData.email,
-          comment: formData.comment,
-        },
-      ]);
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      if (error) {
-        console.error("Supabase error details:", error);
-        throw new Error(error.message);
-      }
-
-      setSuccess("Feedback submitted successfully!");
-      setFormData({ fullName: "", email: "", comment: "" });
-    } catch (err: unknown) {
-      console.error("Submit error:", err);
-      const errorMessage = err instanceof Error ? err.message : String(err);
-      if (errorMessage.includes("NetworkError")) {
-        setError("Network error. Please check your internet connection.");
-      } else if (
-        errorMessage.includes("Unauthorized") ||
-        errorMessage.includes("Invalid")
-      ) {
-        setError("Invalid Supabase configuration. Please check API keys.");
-      } else if (errorMessage.includes('relation "contacts" does not exist')) {
-        setError("Contacts table not found. Please create it in Supabase.");
+      if (res.ok) {
+        setMessage({
+          type: "success",
+          text: "Feedback submitted successfully!",
+        });
+        setFormData({ fullName: "", email: "", telegram: "", comment: "" });
       } else {
-        setError("Failed to submit feedback: " + errorMessage);
+        const data = await res.json();
+        setMessage({
+          type: "error",
+          text: data.error || "Submission failed. Try again.",
+        });
       }
+    } catch (err) {
+      setMessage({ type: "error", text: "An unexpected error occurred." });
     } finally {
       setIsSubmitting(false);
     }
@@ -226,6 +197,7 @@ export default function ContactPage() {
 
   return (
     <div className="pt-20">
+      {/* Comment Form */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="mx-auto max-w-2xl">
           <div className="text-center">
@@ -241,47 +213,13 @@ export default function ContactPage() {
               need it
             </h2>
           </div>
-          {success && (
-            <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-lg flex justify-between items-center">
-              <span>{success}</span>
-              <button
-                onClick={() => setSuccess(null)}
-                className="text-green-800 hover:text-green-900"
-                aria-label="Close success message"
-              >
-                <Image
-                  src="/images/greaterthan.svg"
-                  alt=""
-                  width={12}
-                  height={12}
-                  className="rotate-90"
-                />
-              </button>
-            </div>
-          )}
-          {error && (
-            <div className="mt-4 p-4 bg-red-100 text-red-800 rounded-lg flex justify-between items-center">
-              <span>{error}</span>
-              <button
-                onClick={() => setError(null)}
-                className="text-red-800 hover:text-red-900"
-                aria-label="Close error message"
-              >
-                <Image
-                  src="/images/greaterthan.svg"
-                  alt=""
-                  width={12}
-                  height={12}
-                  className="rotate-90"
-                />
-              </button>
-            </div>
-          )}
+
+          {/* Card */}
           <div className="mt-5 p-4 relative z-10 bg-white border border-gray-200 rounded-xl sm:mt-10 md:p-10 dark:bg-neutral-900 dark:border-neutral-700">
             <form onSubmit={handleSubmit}>
               <div className="mb-4 sm:mb-8">
                 <label
-                  htmlFor="hs-feedback-post-comment-name-1"
+                  htmlFor="contact-name"
                   className="block mb-2 text-sm font-medium dark:text-white"
                 >
                   Full name
@@ -289,7 +227,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   name="fullName"
-                  id="hs-feedback-post-comment-name-1"
+                  id="contact-name"
                   value={formData.fullName}
                   onChange={handleChange}
                   className="py-3 px-4 block w-full border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -297,34 +235,55 @@ export default function ContactPage() {
                   required
                 />
               </div>
+
               <div className="mb-4 sm:mb-8">
                 <label
-                  htmlFor="hs-feedback-post-comment-email-1"
+                  htmlFor="contact-email"
                   className="block mb-2 text-sm font-medium dark:text-white"
                 >
-                  Email or Telegram
+                  Email address
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
-                  id="hs-feedback-post-comment-email-1"
+                  id="contact-email"
                   value={formData.email}
                   onChange={handleChange}
                   className="py-3 px-4 block w-full border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                  placeholder="Email or Telegram (e.g., @username)"
+                  placeholder="Email address"
                   required
                 />
               </div>
+
+              <div className="mb-4 sm:mb-8">
+                <label
+                  htmlFor="contact-telegram"
+                  className="block mb-2 text-sm font-medium dark:text-white"
+                >
+                  Telegram username
+                </label>
+                <input
+                  type="text"
+                  name="telegram"
+                  id="contact-telegram"
+                  value={formData.telegram}
+                  onChange={handleChange}
+                  className="py-3 px-4 block w-full border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  placeholder="@yourusername"
+                  required
+                />
+              </div>
+
               <div>
                 <label
-                  htmlFor="hs-feedback-post-comment-textarea-1"
+                  htmlFor="contact-comment"
                   className="block mb-2 text-sm font-medium dark:text-white"
                 >
                   Feedback
                 </label>
                 <div className="mt-1">
                   <textarea
-                    id="hs-feedback-post-comment-textarea-1"
+                    id="contact-comment"
                     name="comment"
                     rows={3}
                     value={formData.comment}
@@ -335,6 +294,7 @@ export default function ContactPage() {
                   />
                 </div>
               </div>
+
               <div className="mt-6 grid">
                 <button
                   type="submit"
@@ -345,9 +305,23 @@ export default function ContactPage() {
                 </button>
               </div>
             </form>
+            {/* Success/Error Message */}
+            {message && (
+              <div
+                className={`mt-4 px-4 py-2 rounded text-center ${
+                  message.type === "success"
+                    ? "bg-green-50 text-green-700 border border-green-200"
+                    : "bg-red-50 text-red-700 border border-red-200"
+                }`}
+              >
+                {message.text}
+              </div>
+            )}
           </div>
+          {/* End Card */}
         </div>
       </div>
+      {/* End Comment Form */}
     </div>
   );
 }
