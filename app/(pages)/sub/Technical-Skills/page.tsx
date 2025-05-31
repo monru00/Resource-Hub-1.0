@@ -103,7 +103,7 @@ const resources: Resource[] = [
   },
 ];
 
-export default function ThechnicalSkillsPage() {
+export default function TechnicalSkillsPage() {
   return (
     <div className="py-4 my-30">
       <div className="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
