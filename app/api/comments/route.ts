@@ -19,10 +19,9 @@ export async function POST(req: NextRequest) {
   try {
     await addComment(fullName, email, telegram, comment);
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+  } catch (error) {
+    // Explicitly type error as unknown and safely get message
+    const msg = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ success: false, error: msg }, { status: 500 });
   }
 }

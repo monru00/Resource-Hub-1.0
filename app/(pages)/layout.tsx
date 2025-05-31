@@ -297,12 +297,12 @@ export default function PagesLayout({ children }) {
               height={60}
               className="cursor-pointer"
             />
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-2xl font-semibold text-black dark:text-white ml-3"
             >
               Resource Hub
-            </a>
+            </Link>
           </div>
           <div className="mt-3">
             <p className="text-gray-500 dark:text-neutral-500">
