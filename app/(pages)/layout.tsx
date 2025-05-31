@@ -2,10 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
-export default function PagesLayout({ children }) {
+// Add explicit type for children
+interface PagesLayoutProps {
+  children: ReactNode;
+}
+
+export default function PagesLayout({ children }: PagesLayoutProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const pathname = usePathname();
@@ -35,22 +40,22 @@ export default function PagesLayout({ children }) {
   // Use original size for buttons always (not full width on mobile)
   const NavButtons = () => (
     <div className="flex flex-col gap-y-2 lg:flex-row lg:items-center lg:gap-x-2 w-full lg:w-auto">
-      <Link
-        href="#"
+      <button
+        type="button"
         onClick={toggleCart}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white h-10 cursor-pointer"
         style={{ width: "auto" }}
       >
         Sign in
-      </Link>
-      <Link
-        href="#"
+      </button>
+      <button
+        type="button"
         onClick={toggleCart}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none transition disabled:opacity-50 disabled:pointer-events-none h-9 cursor-pointer"
         style={{ width: "auto" }}
       >
         Bookmarks
-      </Link>
+      </button>
     </div>
   );
 
