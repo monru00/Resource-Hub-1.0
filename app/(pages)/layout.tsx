@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
 
 // Add explicit type for children
 interface PagesLayoutProps {
@@ -28,6 +29,13 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
   const toggleCart = () => setIsCartOpen((prev) => !prev);
   const toggleNav = () => setIsNavOpen((prev) => !prev);
 
+  // Close nav on link click for mobile
+  const handleNavLinkClick = () => {
+    if (isMobile && isNavOpen) {
+      toggleNav();
+    }
+  };
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isCartOpen) setIsCartOpen(false);
@@ -42,7 +50,10 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
     <div className="flex flex-col gap-y-2 lg:flex-row lg:items-center lg:gap-x-2 w-full lg:w-auto">
       <button
         type="button"
-        onClick={toggleCart}
+        onClick={() => {
+          toggleCart();
+          handleNavLinkClick(); // Close nav on mobile
+        }}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-white border border-gray-200 text-black hover:bg-gray-100 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white h-10 cursor-pointer"
         style={{ width: "auto" }}
       >
@@ -50,7 +61,10 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
       </button>
       <button
         type="button"
-        onClick={toggleCart}
+        onClick={() => {
+          toggleCart();
+          handleNavLinkClick(); // Close nav on mobile
+        }}
         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none transition disabled:opacity-50 disabled:pointer-events-none h-9 cursor-pointer"
         style={{ width: "auto" }}
       >
@@ -147,17 +161,17 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
             className={`
               ${
                 isNavOpen && isMobile
-                  ? "block absolute left-0 top-0 w-full bg-white z-[100] pt-20 px-4 h-auto"
+                  ? "block absolute left-0 top-0 w-full bg-white dark:bg-neutral-900 z-[1000] pt-20 px-4 h-auto"
                   : isMobile
                   ? "hidden"
-                  : "block static bg-transparent p-0"
+                  : "block static bg-transparent p-0 dark:bg-transparent"
               }
               overflow-y-auto transition-all duration-300 basis-full grow lg:block lg:static lg:w-auto lg:basis-auto lg:order-2 lg:col-span-6
             `}
             style={
               isNavOpen && isMobile
                 ? {
-                    background: "#fff",
+                    background: isMobile && !isNavOpen ? "#fff" : "",
                     minHeight: "100dvh",
                   }
                 : {}
@@ -167,7 +181,7 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
             {isMobile && isNavOpen && (
               <button
                 type="button"
-                className="absolute top-5 right-5 size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl border border-gray-200 text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 z-[101]"
+                className="absolute top-5 right-5 size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl border border-gray-200 text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 z-[1001]"
                 aria-label="Close navigation"
                 onClick={toggleNav}
                 style={{
@@ -195,41 +209,45 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
             <div className="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
               <Link
                 href="/"
-                className={`inline-block ${
+                onClick={handleNavLinkClick}
+                className={`inline-block text-lg font-medium ${
                   pathname === "/"
                     ? "text-blue-600 dark:text-blue-500"
-                    : "text-black dark:text-white"
-                } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
+                    : "text-black max-lg:dark:text-gray-400 dark:text-white"
+                } hover:text-blue-600 dark:hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-neutral-300`}
               >
                 Home
               </Link>
               <Link
                 href="/resources"
-                className={`inline-block ${
+                onClick={handleNavLinkClick}
+                className={`inline-block text-lg font-medium ${
                   pathname === "/resources"
                     ? "text-blue-600 dark:text-blue-500"
-                    : "text-black dark:text-white"
-                } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
+                    : "text-black max-lg:dark:text-gray-400 dark:text-white"
+                } hover:text-blue-600 dark:hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-neutral-300`}
               >
                 Resources
               </Link>
               <Link
                 href="/faq"
-                className={`inline-block ${
+                onClick={handleNavLinkClick}
+                className={`inline-block text-lg font-medium ${
                   pathname === "/faq"
                     ? "text-blue-600 dark:text-blue-500"
-                    : "text-black dark:text-white"
-                } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
+                    : "text-black max-lg:dark:text-gray-400 dark:text-white"
+                } hover:text-blue-600 dark:hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-neutral-300`}
               >
                 FAQ
               </Link>
               <Link
                 href="/contact"
-                className={`inline-block ${
+                onClick={handleNavLinkClick}
+                className={`inline-block text-lg font-medium ${
                   pathname === "/contact"
                     ? "text-blue-600 dark:text-blue-500"
-                    : "text-black dark:text-white"
-                } hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:hover:text-neutral-300 dark:focus:text-neutral-300`}
+                    : "text-black max-lg:dark:text-gray-400 dark:text-white"
+                } hover:text-blue-600 dark:hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-neutral-300`}
               >
                 Contact
               </Link>
@@ -362,6 +380,13 @@ export default function PagesLayout({ children }: PagesLayoutProps) {
         </div>
       </footer>
       {/* END FOOTER */}
+
+      {/* Umami Analytics Script */}
+      <Script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id="73c152c3-dac4-4188-842d-814c64ff4b8b"
+      />
     </div>
   );
 }
