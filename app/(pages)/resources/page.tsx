@@ -4,63 +4,63 @@ import Link from "next/link";
 export default function ResourcesPage() {
   const categories = [
     {
-      href: "/sub/frontend-ui-ux",
+      href: "/frontend-ui-ux",
       title: "Frontend & UI/UX",
       description:
         "Build beautiful UI and learn UI/UX faster with the right tools and inspirations.",
       icon: "/images/ui.svg",
     },
     {
-      href: "/sub/backend-api",
+      href: "/backend-api",
       title: "Backend & API",
       description:
         "Power your apps with robust backends, APIs, and server-side solutions.",
       icon: "/images/backend.svg",
     },
     {
-      href: "/sub/database",
+      href: "/database",
       title: "Database",
       description:
         "Store, manage, and query data with ease using the best database resources.",
       icon: "/images/database.svg",
     },
     {
-      href: "/sub/technical-skills",
+      href: "/technical-skills",
       title: "Technical Skills",
       description:
         "Sharpen your toolkit with practical skills, tips, and deep dives to DSA and job preparation.",
       icon: "/images/algorithm.svg",
     },
     {
-      href: "/sub/learn-programming",
+      href: "/learn-programming",
       title: "Learn Programming",
       description:
         "Start coding from scratch or level up with curated learning paths and resources.",
       icon: "/images/programming.svg",
     },
     {
-      href: "/sub/educational-repos",
+      href: "/educational-repos",
       title: "Educational Repos & Analytics",
       description:
         "Explore real projects and insights to learn how developers build at scale.",
       icon: "/images/repo.svg",
     },
     {
-      href: "/sub/development-tools",
+      href: "/development-tools",
       title: "Development Tools",
       description:
         "Streamline your workflow with must-have tools, extensions, and utilities.",
       icon: "/images/tools.svg",
     },
     {
-      href: "/sub/ai-automation",
+      href: "/ai-automation",
       title: "AI & Automation",
       description:
         "Boost productivity with AI tools, scripts, and smart automation hacks.",
       icon: "/images/ai.svg",
     },
     {
-      href: "/sub/developer-resources",
+      href: "/developer-resources",
       title: "Developer Resources",
       description:
         "From docs to communities — everything you need to grow as a developer.",

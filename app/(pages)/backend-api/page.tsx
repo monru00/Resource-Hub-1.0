@@ -1,4 +1,4 @@
-import ResourceCard from "../../../components/ResourceCard";
+import ResourceCard from "../../components/ResourceCard";
 
 interface Resource {
   id: string;
