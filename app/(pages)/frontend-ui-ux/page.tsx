@@ -180,7 +180,7 @@ const resources: Resource[] = [
     question: "Designing dashboards and need components fast?",
     description:
       "This community Figma file gives you clean, responsive dashboard templates to speed up your workflow. Great for admin panels, SaaS apps, or internal tools.",
-    imageSrc: "/images/preline-ui.jpg",
+    imageSrc: "/images/prelineUi.jpg",
     altText: "Figma Design System image",
     link: "https://www.figma.com/community/file/1179068859697769656",
   },
@@ -273,7 +273,7 @@ const resources: Resource[] = [
       "Looking for color palettes inspired by anything — even “hello kitty”?",
     description:
       "Palitra turns keywords into beautiful, ready-to-use color combinations. It’s a great tool for designers and developers who want fast, creative color inspiration.",
-    imageSrc: "/images/Palitra.jpg",
+    imageSrc: "/images/palitra.jpg",
     altText: "Palitra image",
     link: "https://palitra.app/?q=hello+kitty",
   },
