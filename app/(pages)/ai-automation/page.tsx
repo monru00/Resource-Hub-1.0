@@ -55,17 +55,6 @@ const resources: Resource[] = [
   },
   {
     id: "5",
-    title: "Kapa.ai",
-    question:
-      "Need to turn your documentation or community into an AI chatbot?",
-    description:
-      "Kapa.ai creates helpful, accurate AI support agents using your own content — great for dev platforms, startups, and open source tools.",
-    imageSrc: "/images/Kapa.jpg",
-    altText: "Kapa.ai image",
-    link: "https://www.kapa.ai/",
-  },
-  {
-    id: "6",
     title: "Composio Docs",
     question: "Want to add no-hassle integrations to your SaaS app?",
     description:
@@ -75,7 +64,7 @@ const resources: Resource[] = [
     link: "https://docs.composio.dev/getting-started/welcome",
   },
   {
-    id: "7",
+    id: "6",
     title: "CopilotKit",
     question: "Building an AI copilot into your web app?",
     description:
@@ -85,7 +74,7 @@ const resources: Resource[] = [
     link: "https://docs.copilotkit.ai/",
   },
   {
-    id: "8",
+    id: "7",
     title: "Liveblocks",
     question:
       "Need real-time collaboration features like multiplayer cursors or shared states?",
@@ -96,7 +85,7 @@ const resources: Resource[] = [
     link: "https://liveblocks.io/",
   },
   {
-    id: "9",
+    id: "8",
     title: "Void Editor",
     question:
       "Want a visual playground for building and running generative AI prompts?",
@@ -107,7 +96,7 @@ const resources: Resource[] = [
     link: "https://voideditor.com/",
   },
   {
-    id: "10",
+    id: "9",
     title: "Agora",
     question: "Adding live voice, video, or real-time engagement to your apps?",
     description:
@@ -117,7 +106,7 @@ const resources: Resource[] = [
     link: "https://www.agora.io/en/",
   },
   {
-    id: "11",
+    id: "10",
     title: "Bolt",
     question: "Need a fast way to prototype UIs and logic in your browser?",
     description:
@@ -127,7 +116,7 @@ const resources: Resource[] = [
     link: "https://bolt.new/",
   },
   {
-    id: "12",
+    id: "11",
     title: "Modal",
     question: "Deploying Python functions as cloud-native microservices?",
     description:
@@ -137,7 +126,7 @@ const resources: Resource[] = [
     link: "https://modal.com/",
   },
   {
-    id: "13",
+    id: "12",
     title: "Beam",
     question: "Want a platform to deploy AI apps without touching ops?",
     description:
@@ -147,7 +136,7 @@ const resources: Resource[] = [
     link: "https://www.beam.cloud/",
   },
   {
-    id: "14",
+    id: "13",
     title: "Unreal Speech",
     question: "Looking for ultra-realistic text-to-speech at scale?",
     description:
@@ -157,7 +146,7 @@ const resources: Resource[] = [
     link: "https://unrealspeech.com/",
   },
   {
-    id: "15",
+    id: "14",
     title: "Mistral Chat",
     question: "Trying out open-weight, fast local AI chat?",
     description:
@@ -167,7 +156,7 @@ const resources: Resource[] = [
     link: "https://chat.mistral.ai/chat",
   },
   {
-    id: "16",
+    id: "15",
     title: "LM Studio",
     question: "Running LLMs locally on your own machine?",
     description:
@@ -177,7 +166,7 @@ const resources: Resource[] = [
     link: "https://lmstudio.ai/",
   },
   {
-    id: "17",
+    id: "16",
     title: "Cartesia Sonic",
     question: "Want to visually explore how models respond to prompts?",
     description:
@@ -187,7 +176,7 @@ const resources: Resource[] = [
     link: "https://cartesia.ai/sonic",
   },
   {
-    id: "18",
+    id: "17",
     title: "Firecrawl",
     question: "Need to pull and process data from websites at scale?",
     description:
@@ -197,7 +186,7 @@ const resources: Resource[] = [
     link: "https://www.firecrawl.dev/",
   },
   {
-    id: "19",
+    id: "18",
     title: "Kimi",
     question: "Searching the web through an LLM-enhanced interface?",
     description:
@@ -207,7 +196,7 @@ const resources: Resource[] = [
     link: "https://www.kimi.com/",
   },
   {
-    id: "20",
+    id: "19",
     title: "LLM Stats",
     question: "Tracking open-weight models and benchmarks in one place?",
     description:
@@ -217,7 +206,7 @@ const resources: Resource[] = [
     link: "https://llm-stats.com/",
   },
   {
-    id: "21",
+    id: "20",
     title: "Mastra",
     question: "Looking to automate workflows using AI and data triggers?",
     description:
@@ -227,7 +216,7 @@ const resources: Resource[] = [
     link: "https://mastra.ai/",
   },
   {
-    id: "22",
+    id: "21",
     title: "SpinAI",
     question: "Building open-source AI apps that can self-update?",
     description:
@@ -237,7 +226,7 @@ const resources: Resource[] = [
     link: "https://www.spinai.dev/",
   },
   {
-    id: "23",
+    id: "22",
     title: "A0.dev",
     question: "Testing prompts across multiple models at once?",
     description:
@@ -247,7 +236,7 @@ const resources: Resource[] = [
     link: "https://a0.dev/",
   },
   {
-    id: "24",
+    id: "23",
     title: "Rork",
     question: "Want a native-feeling LLM app for the terminal?",
     description:
@@ -257,7 +246,7 @@ const resources: Resource[] = [
     link: "https://rork.com/",
   },
   {
-    id: "25",
+    id: "24",
     title: "Kiki.dev",
     question: "Need an open-source chatbot framework with great UX?",
     description:
@@ -267,7 +256,7 @@ const resources: Resource[] = [
     link: "https://www.kiki.dev/",
   },
   {
-    id: "26",
+    id: "25",
     title: "Repomix",
     question: "Discovering developer tools and projects, curated and ranked?",
     description:
@@ -277,7 +266,7 @@ const resources: Resource[] = [
     link: "https://repomix.com/",
   },
   {
-    id: "27",
+    id: "26",
     title: "PromptKit",
     question: "Creating prompt-powered apps quickly?",
     description:
@@ -287,7 +276,7 @@ const resources: Resource[] = [
     link: "https://www.prompt-kit.com/",
   },
   {
-    id: "28",
+    id: "27",
     title: "Groq",
     question: "Want blazing-fast inference for LLMs?",
     description:
@@ -297,7 +286,7 @@ const resources: Resource[] = [
     link: "https://groq.com/",
   },
   {
-    id: "29",
+    id: "28",
     title: "OpenRouter",
     question: "Routing your prompts to different LLMs via one API?",
     description:
@@ -307,18 +296,7 @@ const resources: Resource[] = [
     link: "https://openrouter.ai/",
   },
   {
-    id: "30",
-    title: "Mem0.ai",
-    question: "Organizing your learning with spaced repetition and AI?",
-    description:
-      "Mem0 combines smart note-taking with memory-friendly review systems — great for devs, students, and lifelong learners.",
-    imageSrc: "/images/Mem0.jpg",
-    altText: "Mem0.ai image",
-    link: "https://mem0.ai/",
-  },
-
-  {
-    id: "31",
+    id: "29",
     title: "Presenti",
     question: "Turning ideas or briefs into presentations with AI?",
     description:
@@ -328,7 +306,7 @@ const resources: Resource[] = [
     link: "https://presenti.ai/",
   },
   {
-    id: "32",
+    id: "30",
     title: "LLM’s Text Hub",
     question: "Searching and archiving LLM outputs and prompts?",
     description:
@@ -338,7 +316,7 @@ const resources: Resource[] = [
     link: "https://llmstxthub.com/",
   },
   {
-    id: "33",
+    id: "31",
     title: "SecondMe",
     question: "Deploying personal AI agents with memory and context?",
     description:
@@ -348,7 +326,7 @@ const resources: Resource[] = [
     link: "https://www.secondme.io/",
   },
   {
-    id: "34",
+    id: "32",
     title: "Firebase Studio",
     question: "Firebase StudioVisually manage your Firebase Firestore data?",
     description:
@@ -358,7 +336,7 @@ const resources: Resource[] = [
     link: "https://firebase.studio/",
   },
   {
-    id: "35",
+    id: "33",
     title: "OpenCode AI",
     question: "Open-source platform to build, test, and deploy AI apps?",
     description:
@@ -368,7 +346,7 @@ const resources: Resource[] = [
     link: "https://github.com/opencode-ai/opencode",
   },
   {
-    id: "36",
+    id: "34",
     title: "OpenAI Image Generation API",
     question: "Need to generate images programmatically from text?",
     description:
