@@ -242,7 +242,7 @@ const resources: Resource[] = [
     question: "Searching for type combinations that actually look good?",
     description:
       "Typewolf curates beautiful font pairings, trends, and usage examples across real websites. It’s the designer’s go-to for typography that works.",
-    imageSrc: "/images/Typewolf.jpg",
+    imageSrc: "/images/typewolf.jpg",
     altText: "Typewolf image",
     link: "https://www.typewolf.com/",
   },
@@ -252,7 +252,7 @@ const resources: Resource[] = [
     question: "Want a Figma alternative that’s open source and team-friendly?",
     description:
       "Penpot is a design and prototyping tool built for collaboration — browser-based and open to all. Ideal for teams that want control and freedom over their workflow.",
-    imageSrc: "/images/Penpot.jpg",
+    imageSrc: "/images/penpot.jpg",
     altText: "Penpot image",
     link: "https://penpot.app/",
   },
@@ -262,13 +262,13 @@ const resources: Resource[] = [
     question: "Want to design, prototype, and collaborate — all in one place?",
     description:
       "Figma is a powerful, browser-based design tool used by teams to create user interfaces, systems, and prototypes in real time. It’s fast, flexible, and built for modern product design.",
-    imageSrc: "/images/Figma.jpg",
+    imageSrc: "/images/figma.jpg",
     altText: "Figma image",
     link: "https://www.figma.com/",
   },
   {
     id: "26",
-    title: "Palitra",
+    title: "palitra",
     question:
       "Looking for color palettes inspired by anything — even “hello kitty”?",
     description:
@@ -315,7 +315,7 @@ const resources: Resource[] = [
     question: "Trying to find beautiful, lightweight SVG icons fast?",
     description:
       "Sixelf gives you access to simple, scalable icons that are easy to customize and use. Great for clean UI design without the bloat.",
-    imageSrc: "/images/Sixelf.jpg",
+    imageSrc: "/images/sixelf.jpg",
     altText: "Sixelf image",
     link: "https://sixelf.com/",
   },
